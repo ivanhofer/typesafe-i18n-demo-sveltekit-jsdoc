@@ -1,5 +1,7 @@
 // @ts-check
 
+import { date } from 'typesafe-i18n/formatters'
+
 /**
  * @typedef { import('typesafe-i18n').FormattersInitializer<Locales, Formatters> } FormattersInitializer,
  * @typedef { import('./i18n-types').Locales } Locales,
@@ -13,7 +15,7 @@
 export const initFormatters = async (locale) => {
 	/** @type { Formatters } */
 	const formatters = {
-		// add your formatter functions here
+		simpleDate: date(locale, { day: '2-digit', month: 'short', year: 'numeric' }),
 	}
 
 	return formatters

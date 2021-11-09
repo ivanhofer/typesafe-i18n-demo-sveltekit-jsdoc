@@ -1,6 +1,14 @@
 {
 	"name": "typesafe-i18n-demo-sveltekit-jsdoc",
-	"version": "0.0.1",
+	"description": "Showcase of typesafe-i18n woking in a SvelteKit project vwith JsDoc",
+	"version": "1.0.0",
+	"author": "ivanhofer",
+	"license": "MIT",
+	"homepage": "https://github.com/ivanhofer/typesafe-i18n-demo-sveltekit-jsdoc",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ivanhofer/typesafe-i18n-demo-sveltekit-jsdoc"
+	},
 	"scripts": {
 		"dev": "npm-run-all --parallel sveltekit typesafe-i18n",
 		"sveltekit": "svelte-kit dev",

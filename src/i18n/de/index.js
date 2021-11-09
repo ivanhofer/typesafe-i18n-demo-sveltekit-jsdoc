@@ -6,6 +6,7 @@
 
 /** @type { Translation } */
 const de = {
+	HI: 'Willkommen zum Svelte Summit 2021',
 }
 
 module.exports = de

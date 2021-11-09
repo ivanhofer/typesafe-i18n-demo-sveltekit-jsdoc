@@ -6,7 +6,7 @@
 
 /** @type { BaseTranslation } */
 const en = {
-	// TODO: your translations go here
+	HI: 'Welcome to Svelte Fall Summit 2021',
 }
 
 module.exports = en

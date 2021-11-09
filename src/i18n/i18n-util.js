@@ -22,13 +22,15 @@ export const baseLocale = 'en'
 /** @type { Locales[] } */
 export const locales = [
 	'de',
-	'en'
+	'en',
+	'it'
 ]
 
 /** @type { Record<Locales, () => Promise<any>> } */
 const localeTranslationLoaders = {
 	de: () => import('./de'),
 	en: () => import('./en'),
+	it: () => import('./it'),
 }
 
 /**

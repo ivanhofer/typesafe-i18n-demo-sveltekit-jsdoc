@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	import LL from '$i18n/i18n-svelte'
 </script>
 

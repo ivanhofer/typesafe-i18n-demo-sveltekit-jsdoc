@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	import { locale } from '$i18n/i18n-svelte'
 	import LocaleSwitcher from './LocaleSwitcher.svelte'
 </script>

@@ -1,0 +1,5 @@
+{
+   "$schema": "https://unpkg.com/typesafe-i18n@2.49.4/schema/typesafe-i18n.json",
+   "adapter": "svelte",
+   "outputFormat": "JavaScript"
+}

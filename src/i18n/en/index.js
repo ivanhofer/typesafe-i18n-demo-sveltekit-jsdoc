@@ -9,4 +9,4 @@ const en = {
 	HI: 'Welcome to Svelte Fall Summit 2021',
 }
 
-module.exports = en
+export default en

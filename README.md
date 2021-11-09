@@ -1,38 +1,34 @@
-# create-svelte
+# typesafe-i18n demo sveltekit jsodc
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+This example demonstrates a [`typesafe-i18n`](https://github.com/ivanhofer/typesafe-i18n)-integration with [SvelteKit](https://kit.svelte.dev/) with JsDoc comments.
 
-## Creating a project
+### LIVE-DEMO: https://typesafe-i18n-demo-sveltekit-jsdoc.vercel.app
 
-If you're seeing this, you've probably already done this step. Congrats!
+It is a basic example and shows:
+ - basic i18n setup of three different locales
+ - auto-detecting user language preferences
+ - full SSR support
+ - SEO optimizations
+ - locale switching
+ - lazy loading of locales
+ - persistent locale state via language routes
+ - typesafety features of `typesafe-i18n`
+ - plural rules
+ - locale specific date-formatting
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
 
-# create a new project in my-app
-npm init svelte@next my-app
-```
+## add `typesafe-i18n` to an existing SvelteKit project
 
-> Note: the `@next` is temporary
+If you want to implement the solution in a existing project, you can take a look at the [commit history](https://github.com/ivanhofer/typesafe-i18n-demo-sveltekit-jsdoc/commits/master) to see a step-by-step guide.
 
-## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## TypeScript version
 
-```bash
-npm run dev
+You can find the exact same example in a TypeScript version [here](https://github.com/ivanhofer/typesafe-i18n-demo-sveltekit).
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
 
-## Building
+## learn more
 
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
+If you want to know more about `typesafe-i18n` head over to the main repo:
 
-```bash
-npm run build
-```
-
-> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
+### https://github.com/ivanhofer/typesafe-i18n

@@ -6,7 +6,7 @@
 
 /** @type { Translation } */
 const de = {
-	HI: 'Willkommen zum Svelte Summit 2021',
+	HI: 'Willkommen zum Svelte Summit {year}',
 }
 
 export default de

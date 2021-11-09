@@ -7,6 +7,7 @@
 /** @type { Translation } */
 const it = {
 	HI: 'Benvenuti al Svelte Fall Summit {year}',
+	spectators: '{0} {{spettatore|spettatori}} in diretta',
 }
 
 export default it

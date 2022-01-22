@@ -4,9 +4,8 @@
 	import { baseLocale, locales } from '$i18n/i18n-util'
 
 	/** @type { import('@sveltejs/kit').Load } */
-	export const load = async ({ page, session }) => {
-		/** @type { import('$i18n/i18n-types').Locales } */
-		const lang = (page.params.lang)
+	export const load = async ({ url, session, params }) => {
+		const lang = /** @type { import('$i18n/i18n-types').Locales } */ (params.lang)
 
 		// redirect to preferred language if user comes from page root
 		if (!lang) {
@@ -20,7 +19,7 @@
 		if (!locales.includes(lang)) {
 			return {
 				status: 302,
-				redirect: replaceLocaleInUrl(page.path, baseLocale),
+				redirect: replaceLocaleInUrl(url.pathname, baseLocale),
 			}
 		}
 

@@ -2,28 +2,35 @@ import { detectLocale } from '$i18n/i18n-util'
 import { initAcceptLanguageHeaderDetector } from 'typesafe-i18n/detectors'
 
 /** @type { import('@sveltejs/kit').Handle } */
-export const handle = async ({ request, resolve }) => {
-	const response = await resolve(request)
+export const handle = async ({ event, resolve }) => {
+	const response = await resolve(event)
 
 	// read language slug
-	const [, lang] = request.path.split('/')
+	const [, lang] = event.url.pathname.split('/')
 
-	return {
-		...response,
-		// replace html lang attribute with correct language
-		body: (response.body || '').toString().replace('<html lang="en">', `<html lang="${lang}">`),
-	}
+	// replace html lang attribute with correct language
+	const body = await response.text();
+	return new Response(body.replace('<html lang="en">', `<html lang="${lang}">`), response)
 }
 
 
 /** @type { import('@sveltejs/kit').GetSession } */
-export const getSession = (request) => {
+export const getSession = (event) => {
 	// detect the preferred language the user has configured in his browser
 	// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language
-	const acceptLanguageDetector = initAcceptLanguageHeaderDetector(request)
+	const headers = getHeaders(event)
+	const acceptLanguageDetector = initAcceptLanguageHeaderDetector({ headers })
 	const locale = detectLocale(acceptLanguageDetector)
 
 	return {
 		locale,
 	}
+}
+
+/** @type { (event: import('@sveltejs/kit').RequestEvent) => Record<string, string> } */
+const getHeaders = (event) => {
+	const headers = /** @type { Record<string, string> } */ ({})
+	event.request.headers.forEach((value, key) => headers[key] = value)
+
+	return headers
 }

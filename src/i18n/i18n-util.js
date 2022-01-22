@@ -11,7 +11,7 @@
  * @typedef { import('./i18n-types').TranslationFunctions } TranslationFunctions
  */
 
-import { i18nString as initI18nString, i18nObjectLoaderAsync } from 'typesafe-i18n'
+import { i18nString as initI18nString, initI18nObjectLoaderAsync } from 'typesafe-i18n'
 
 import { detectLocale as detectLocaleFn } from 'typesafe-i18n/detectors'
 import { initFormatters } from './formatters'
@@ -25,6 +25,8 @@ export const locales = [
 	'en',
 	'it'
 ]
+
+const i18nObjectLoaderAsync = initI18nObjectLoaderAsync()
 
 /** @type { Record<Locales, () => Promise<any>> } */
 const localeTranslationLoaders = {

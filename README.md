@@ -1,4 +1,4 @@
-# typesafe-i18n demo sveltekit jsodc
+# typesafe-i18n demo sveltekit JsDoc
 
 **Here is a [video](https://www.youtube.com/watch?v=C6O5pMMMTG0) for better context**
 

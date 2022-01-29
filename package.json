@@ -34,6 +34,6 @@
 		"svelte-preprocess": "^4.10.2"
 	},
 	"dependencies": {
-		"typesafe-i18n": "^2.59.0"
+		"typesafe-i18n": "^3.0.0"
 	}
 }

@@ -1,7 +1,7 @@
 <script context="module">
-	import { initI18n } from '$i18n/i18n-svelte'
 	import { replaceLocaleInUrl } from '../utils'
 	import { baseLocale, locales } from '$i18n/i18n-util'
+	import { loadLocaleAsync } from '$i18n/i18n-util.async';
 
 	/** @type { import('@sveltejs/kit').Load } */
 	export const load = async ({ url, session, params }) => {
@@ -26,14 +26,18 @@
 		// delete session locale since we don't need it to be sent to the client
 		delete session.locale
 
-		await initI18n(lang)
+		await loadLocaleAsync(lang)
 
-		return {}
+		return { props: { locale: lang } }
 	}
 </script>
 
 <script>
 	import Header from '$lib/Header.svelte'
+	import { setLocale } from '$i18n/i18n-svelte'
+
+	export let locale
+	setLocale(locale)
 </script>
 
 <Header />

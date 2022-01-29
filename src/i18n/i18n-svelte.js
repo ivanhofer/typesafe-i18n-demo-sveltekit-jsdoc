@@ -10,20 +10,13 @@
  * @typedef { import('./i18n-types').Formatters } Formatters
  */
 
-import { getI18nSvelteStore } from 'typesafe-i18n/adapters/adapter-svelte';
+import { initI18nSvelte } from 'typesafe-i18n/adapters/adapter-svelte';
 
-import { baseLocale, getTranslationForLocale } from './i18n-util'
-import { initFormatters } from './formatters'
+import { loadedLocales, loadedFormatters } from './i18n-util'
 
 /** @type { SvelteStoreInit } */
-const { initI18n: init, setLocale, isLoadingLocale, locale, LL } = getI18nSvelteStore()
+const { locale, LL, setLocale } = initI18nSvelte(loadedLocales, loadedFormatters)
 
-/**
- * @param { Locales } locale
- * @return { Promise<void> }
- */
-const initI18n = (locale = baseLocale) => init(locale, getTranslationForLocale, initFormatters)
-
-export { initI18n, setLocale, isLoadingLocale, locale, LL }
+export { locale, LL, setLocale }
 
 export default LL

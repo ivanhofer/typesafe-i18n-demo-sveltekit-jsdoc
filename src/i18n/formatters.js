@@ -10,9 +10,9 @@ import { date } from 'typesafe-i18n/formatters'
 
 /**
  * @param { Locales } locale
- * @return { Promise<Formatters> }
+ * @return { Formatters }
  */
-export const initFormatters = async (locale) => {
+export const initFormatters = (locale) => {
 	/** @type { Formatters } */
 	const formatters = {
 		simpleDate: date(locale, { day: '2-digit', month: 'short', year: 'numeric' }),

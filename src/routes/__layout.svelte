@@ -5,7 +5,8 @@
 
 	/** @type { import('@sveltejs/kit').Load } */
 	export const load = async ({ url, session, params }) => {
-		const lang = /** @type { import('$i18n/i18n-types').Locales } */ (params.lang)
+		// fallback needed because of https://github.com/sveltejs/kit/issues/3647
+		const lang = /** @type { import('$i18n/i18n-types').Locales } */ (params.lang || url.pathname.split('/')[1])
 
 		// redirect to preferred language if user comes from page root
 		if (!lang) {

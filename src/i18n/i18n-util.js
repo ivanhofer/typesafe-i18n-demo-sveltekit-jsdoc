@@ -3,13 +3,13 @@
 /* eslint-disable */
 
 /**
- * @typedef { import('typesafe-i18n').TranslateByString } TranslateByString,
- * @typedef { import('typesafe-i18n').LocaleTranslations<Locales, Translations> } LocaleTranslations,
- * @typedef { import('typesafe-i18n').LocaleTranslationFunctions<Locales, Translations, TranslationFunctions> } LocaleTranslationFunctions,
- * @typedef { import('typesafe-i18n/detectors').LocaleDetector } LocaleDetector,
- * @typedef { import('./i18n-types').Locales } Locales,
- * @typedef { import('./i18n-types').Formatters } Formatters,
- * @typedef { import('./i18n-types').Translations } Translations,
+ * @typedef { import('typesafe-i18n').TranslateByString } TranslateByString
+ * @typedef { import('typesafe-i18n').LocaleTranslations<Locales, Translations> } LocaleTranslations
+ * @typedef { import('typesafe-i18n').LocaleTranslationFunctions<Locales, Translations, TranslationFunctions> } LocaleTranslationFunctions
+ * @typedef { import('typesafe-i18n/detectors').LocaleDetector } LocaleDetector
+ * @typedef { import('./i18n-types').Locales } Locales
+ * @typedef { import('./i18n-types').Formatters } Formatters
+ * @typedef { import('./i18n-types').Translations } Translations
  * @typedef { import('./i18n-types').TranslationFunctions } TranslationFunctions
  */
 

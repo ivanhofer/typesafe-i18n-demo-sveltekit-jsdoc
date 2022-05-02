@@ -3,16 +3,16 @@
 /* eslint-disable */
 
 /**
- * @typedef { import('typesafe-i18n/svelte').SvelteStoreInit<Locales, Translations, TranslationFunctions> } SvelteStoreInit,
- * @typedef { import('./i18n-types').Locales } Locales,
- * @typedef { import('./i18n-types').Translations } Translations,
- * @typedef { import('./i18n-types').TranslationFunctions } TranslationFunctions,
+ * @typedef { import('typesafe-i18n/svelte').SvelteStoreInit<Locales, Translations, TranslationFunctions> } SvelteStoreInit
  * @typedef { import('./i18n-types').Formatters } Formatters
+ * @typedef { import('./i18n-types').Locales } Locales
+ * @typedef { import('./i18n-types').TranslationFunctions } TranslationFunctions
+ * @typedef { import('./i18n-types').Translations } Translations
  */
 
 import { initI18nSvelte } from 'typesafe-i18n/svelte'
 
-import { loadedLocales, loadedFormatters } from './i18n-util'
+import { loadedFormatters, loadedLocales } from './i18n-util'
 
 /** @type { SvelteStoreInit } */
 const { locale, LL, setLocale } = initI18nSvelte(loadedLocales, loadedFormatters)

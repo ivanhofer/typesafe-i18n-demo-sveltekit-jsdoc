@@ -1,16 +1,16 @@
 import { detectLocale } from '$i18n/i18n-util'
 import { initAcceptLanguageHeaderDetector } from 'typesafe-i18n/detectors'
 
+/** @param { string } locale */
+const htmlLanguageAttributeReplacer = (locale) => ({ html }) => html.replace('<html lang="en">', `<html lang="${locale}">`)
+
 /** @type { import('@sveltejs/kit').Handle } */
 export const handle = async ({ event, resolve }) => {
-	const response = await resolve(event)
-
 	// read language slug
 	const [, lang] = event.url.pathname.split('/')
 
 	// replace html lang attribute with correct language
-	const body = await response.text();
-	return new Response(body.replace('<html lang="en">', `<html lang="${lang}">`), response)
+	return resolve(event, { transformPage: htmlLanguageAttributeReplacer(lang) })
 }
 
 
@@ -27,7 +27,7 @@ export const getSession = (event) => {
 	}
 }
 
-/** @type { (event: import('@sveltejs/kit').RequestEvent) => Record<string, string> } */
+/** @type { (event: import('@sveltejs/kit/types/private').RequestEvent) => Record<string, string> } */
 const getHeaders = (event) => {
 	const headers = /** @type { Record<string, string> } */ ({})
 	event.request.headers.forEach((value, key) => headers[key] = value)

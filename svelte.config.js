@@ -1,6 +1,6 @@
 import preprocess from 'svelte-preprocess'
 import path from 'path'
-import vercel from '@sveltejs/adapter-vercel'
+import netlify from '@sveltejs/adapter-netlify'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -9,7 +9,7 @@ const config = {
 	preprocess: preprocess({ typescript: false }),
 
 	kit: {
-		adapter: vercel(),
+		adapter: netlify(),
 
 		vite: {
 			resolve: {

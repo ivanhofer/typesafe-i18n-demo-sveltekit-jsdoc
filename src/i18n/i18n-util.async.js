@@ -22,8 +22,7 @@ const localeTranslationLoaders = {
  * @param { Partial<Translations> } dictionary
  * @return { Translations }
  */
-const updateDictionary = (locale, dictionary) =>
-	loadedLocales[locale] = { ...loadedLocales[locale], ...dictionary }
+const updateDictionary = (locale, dictionary) => (loadedLocales[locale] = { ...loadedLocales[locale], ...dictionary })
 
 /**
  * @param { Locales } locale
@@ -32,7 +31,7 @@ const updateDictionary = (locale, dictionary) =>
 export const loadLocaleAsync = async (locale) => {
 	updateDictionary(
 		locale,
-		/** @type { Translations } */ (/** @type { unknown } */ ((await localeTranslationLoaders[locale]()).default))
+		/** @type { Translations } */ (/** @type { unknown } */ ((await localeTranslationLoaders[locale]()).default)),
 	)
 	loadFormatters(locale)
 }
@@ -43,5 +42,4 @@ export const loadAllLocalesAsync = () => Promise.all(locales.map(loadLocaleAsync
  * @param { Locales } locale
  * @return { void }
  */
-export const loadFormatters = (locale) =>
-	void (loadedFormatters[locale] = initFormatters(locale))
+export const loadFormatters = (locale) => void (loadedFormatters[locale] = initFormatters(locale))

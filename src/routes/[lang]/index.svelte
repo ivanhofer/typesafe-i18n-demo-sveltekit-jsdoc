@@ -20,7 +20,6 @@
 	}
 
 	const day = new Date('2021-11-20')
-
 </script>
 
 <h2>

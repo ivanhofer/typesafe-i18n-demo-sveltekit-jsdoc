@@ -1,7 +1,7 @@
 <script context="module">
 	import { replaceLocaleInUrl } from '../utils'
 	import { baseLocale, locales } from '$i18n/i18n-util'
-	import { loadLocaleAsync } from '$i18n/i18n-util.async';
+	import { loadLocaleAsync } from '$i18n/i18n-util.async'
 
 	/** @type { import('@sveltejs/kit').Load } */
 	export const load = async ({ url, session, params }) => {

@@ -21,7 +21,11 @@ import { detectLocale as detectLocaleFn } from 'typesafe-i18n/detectors'
 export const baseLocale = 'en'
 
 /** @type { Locales[] } */
-export const locales = ['de', 'en', 'it']
+export const locales = [
+	'de',
+	'en',
+	'it'
+]
 
 export const loadedLocales = /** @type { Record<Locales, Translations> } */ ({})
 
@@ -37,7 +41,12 @@ export const i18nString = (locale) => initI18nString(locale, loadedFormatters[lo
  * @param { Locales } locale
  * @return { TranslationFunctions }
  */
-export const i18nObject = (locale) => initI18nObject(locale, loadedLocales[locale], loadedFormatters[locale])
+export const i18nObject = (locale) =>
+	initI18nObject(
+		locale,
+		loadedLocales[locale],
+		loadedFormatters[locale]
+	)
 
 /**
  * @return { LocaleTranslationFunctions }

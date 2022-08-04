@@ -13,7 +13,7 @@ export const handle = async ({ event, resolve }) => {
 	const [, lang] = event.url.pathname.split('/')
 
 	// replace html lang attribute with correct language
-	return resolve(event, { transformPage: htmlLanguageAttributeReplacer(lang) })
+	return resolve(event, { transformPageChunk: htmlLanguageAttributeReplacer(lang) })
 }
 
 /** @type { import('@sveltejs/kit').GetSession } */
@@ -29,7 +29,7 @@ export const getSession = (event) => {
 	}
 }
 
-/** @type { (event: import('@sveltejs/kit/types/private').RequestEvent) => Record<string, string> } */
+/** @type { (event: import('@sveltejs/kit').RequestEvent) => Record<string, string> } */
 const getHeaders = (event) => {
 	const headers = /** @type { Record<string, string> } */ ({})
 	event.request.headers.forEach((value, key) => (headers[key] = value))

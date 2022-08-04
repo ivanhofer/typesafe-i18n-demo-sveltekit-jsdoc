@@ -3,11 +3,6 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"checkJs": true,
-		"paths": {
-			"$i18n/*": ["src/i18n/*"],
-			"$lib": ["src/lib"],
-			"$lib/*": ["src/lib/*"]
-		}
 	},
 	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte"]
 }

@@ -1,6 +1,5 @@
 <script>
-import { browser } from '$app/env';
-
+	import { browser } from '$app/env'
 	import { page } from '$app/stores'
 	import { setLocale, locale } from '$i18n/i18n-svelte'
 	import { locales } from '$i18n/i18n-util'

@@ -29,18 +29,16 @@
 		}
 	}
 
-	if (browser) {
-		// on initial load, add the locale information to the history state
-		const lang = $page.params.lang
-		history.replaceState({ locale: lang }, '', replaceLocaleInUrl(location.pathname, lang))
-	}
-
 	// update locale when navigating via browser back/forward buttons
 	/** @param { PopStateEvent } event */
 	const handlePopStateEvent = async ({ state }) => switchLocale(state.locale, false)
 
 	// update locale when page store changes
-	$: switchLocale(/** @type { import('$i18n/i18n-types').Locales } page.params.lang */ ($page.params.lang), false)
+	$: if ( browser) {
+		const lang = /** @type { import('$i18n/i18n-types').Locales } page.params.lang */ ($page.params.lang)
+		switchLocale(lang, false)
+		history.replaceState({ locale: lang }, '', replaceLocaleInUrl(location.pathname, lang))
+	}
 </script>
 
 <svelte:window on:popstate={handlePopStateEvent} />

@@ -10,7 +10,6 @@ const config = {
 		adapter: vercel(),
 		alias: {
 			$i18n: 'src/i18n',
-			$lib: 'src/lib',
 		},
 	},
 }

@@ -27,6 +27,12 @@ export const locales = [
 	'it'
 ]
 
+/**
+ * @param { string } locale
+ * @return { boolean }
+ */
+export const isLocale = (locale) => locales.includes(/** @type { Locales } */ (locale))
+
 export const loadedLocales = /** @type { Record<Locales, Translations> } */ ({})
 
 export const loadedFormatters = /** @type { Record<Locales, Formatters> } */ ({})

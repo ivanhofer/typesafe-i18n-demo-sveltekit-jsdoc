@@ -20,19 +20,10 @@ export const handle = async ({ event, resolve }) => {
 }
 
 /** @type { (event: import('@sveltejs/kit').RequestEvent) => string } */
-const getPreferredLocale = (event) => {
+const getPreferredLocale = ({ request }) => {
 	// detect the preferred language the user has configured in his browser
 	// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language
-	const headers = transformHeaders(event)
-	const acceptLanguageDetector = initAcceptLanguageHeaderDetector({ headers })
+	const acceptLanguageDetector = initAcceptLanguageHeaderDetector(request)
 
 	return detectLocale(acceptLanguageDetector)
-}
-
-/** @type { (event: import('@sveltejs/kit').RequestEvent) => Record<string, string> } */
-const transformHeaders = ({ request }) => {
-	const headers = /** @type { Record<string, string> } */ ({})
-	request.headers.forEach((value, key) => (headers[key] = value))
-
-	return headers
 }

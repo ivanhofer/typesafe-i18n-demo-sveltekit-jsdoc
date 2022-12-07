@@ -2,11 +2,11 @@
 // e.g. /en/blog/article-1 => /de/blog/article-1
 
 /**
- * @param { string } path
+ * @param { Location } location
  * @param { string } locale
  * @returns string
  */
-export const replaceLocaleInUrl = (path, locale) => {
-	const [, , ...rest] = path.split('/')
-	return `/${[locale, ...rest].join('/')}`
+export const replaceLocaleInUrl = ({ pathname, search }, locale) => {
+	const [, , ...rest] = pathname.split('/')
+	return `/${[locale, ...rest].join('/')}${search}`
 }

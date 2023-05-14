@@ -6,7 +6,8 @@
 
 /** @type { Translation } */
 const it = {
-	HI: 'Benvenuti al Svelte Fall Summit {year}',
+	title: 'typesafe-i18n - Svelte Fall Summit {year}',
+	welcome: 'Benvenuti al Svelte Fall Summit {year}',
 	spectators: '{0} {{spettatore|spettatori}} in diretta',
 	summit: {
 		schedule: '{0|simpleDate}',

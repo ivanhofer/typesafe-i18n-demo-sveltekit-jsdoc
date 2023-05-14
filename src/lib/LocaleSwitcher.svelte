@@ -1,5 +1,6 @@
 <script>
 	import { browser } from '$app/environment'
+	import { invalidateAll } from '$app/navigation'
 	import { page } from '$app/stores'
 	import { setLocale, locale } from '$i18n/i18n-svelte'
 	import { locales } from '$i18n/i18n-util'
@@ -18,15 +19,18 @@
 		await loadLocaleAsync(newLocale)
 
 		// select locale
-		setLocale(newLocale)
+		setLocale(newLocale);
 
 		// update `lang` attribute
-		document.querySelector('html').setAttribute('lang', newLocale)
+		/** @type {HTMLElement} */(document.querySelector('html')).setAttribute('lang', newLocale)
 
 		if (updateHistoryState) {
 			// update url to reflect locale changes
-			history.pushState({ locale: newLocale }, '', replaceLocaleInUrl(location, newLocale))
+			history.pushState({ locale: newLocale }, '', replaceLocaleInUrl($page.url, newLocale))
 		}
+
+		// run the `load` function again
+		invalidateAll()
 	}
 
 	// update locale when navigating via browser back/forward buttons
@@ -34,10 +38,10 @@
 	const handlePopStateEvent = async ({ state }) => switchLocale(state.locale, false)
 
 	// update locale when page store changes
-	$: if ( browser) {
-		const lang = /** @type { import('$i18n/i18n-types').Locales } page.params.lang */ ($page.params.lang)
+	$: if (browser) {
+		const lang = /** @type { import('$i18n/i18n-types').Locales } */ ($page.params.lang)
 		switchLocale(lang, false)
-		history.replaceState({ ...history.state, locale: lang }, '', replaceLocaleInUrl(location, lang))
+		history.replaceState({ ...history.state, locale: lang }, '', replaceLocaleInUrl($page.url, lang))
 	}
 </script>
 
@@ -46,9 +50,9 @@
 <ul>
 	{#each locales as l}
 		<li>
-			<button type="button" class:active={l === $locale} on:click={() => switchLocale(l)}>
+			<a type="button" class:active={l === $locale} href={replaceLocaleInUrl($page.url, l)}>
 				{l}
-			</button>
+			</a>
 		</li>
 	{/each}
 </ul>

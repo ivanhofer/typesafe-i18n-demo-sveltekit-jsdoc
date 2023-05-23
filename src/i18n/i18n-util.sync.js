@@ -15,10 +15,23 @@ import de from './de'
 import en from './en'
 import it from './it'
 
+import de_about from './de/about'
+import en_about from './en/about'
+import it_about from './it/about'
+
 const localeTranslations = {
-	de,
-	en,
-	it,
+	de: {
+		...de,
+		about: de_about
+	},
+	en: {
+		...en,
+		about: en_about
+	},
+	it: {
+		...it,
+		about: it_about
+	},
 }
 
 /**

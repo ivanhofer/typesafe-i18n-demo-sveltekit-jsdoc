@@ -2,7 +2,7 @@
 /* eslint-disable */
 import type { BaseTranslation as BaseTranslationType, LocalizedString, RequiredParams } from 'typesafe-i18n'
 
-export type BaseTranslation = BaseTranslationType
+export type BaseTranslation = BaseTranslationType & DisallowNamespaces
 export type BaseLocale = 'en'
 
 export type Locales =
@@ -10,9 +10,12 @@ export type Locales =
 	| 'en'
 	| 'it'
 
-export type Translation = RootTranslation
+export type Translation = RootTranslation & DisallowNamespaces
 
-export type Translations = RootTranslation
+export type Translations = RootTranslation &
+{
+	about: NamespaceAboutTranslation
+}
 
 type RootTranslation = {
 	/**
@@ -39,6 +42,24 @@ type RootTranslation = {
 	}
 }
 
+export type NamespaceAboutTranslation = {
+	/**
+	 * A​b​o​u​t​ ​t​y​p​e​s​a​f​e​-​i​1​8​n
+	 */
+	title: string
+}
+
+export type Namespaces =
+	| 'about'
+
+type DisallowNamespaces = {
+	/**
+	 * reserved for 'about'-namespace\
+	 * you need to use the `./about/index.ts` file instead
+	 */
+	about?: "[typesafe-i18n] reserved for 'about'-namespace. You need to use the `./about/index.ts` file instead."
+}
+
 export type TranslationFunctions = {
 	/**
 	 * typesafe-i18n - Svelte Fall Summit {year}
@@ -57,6 +78,12 @@ export type TranslationFunctions = {
 		 * {0|simpleDate}
 		 */
 		schedule: (arg0: Date) => LocalizedString
+	}
+	about: {
+		/**
+		 * About typesafe-i18n
+		 */
+		title: () => LocalizedString
 	}
 }
 
